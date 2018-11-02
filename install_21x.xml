@@ -14,19 +14,17 @@
 	<operation>	<!-- line 186 -->
 		<search position="replace"><![CDATA[
 		FROM {db_prefix}topics AS t
-			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)' . ($user_info['is_guest'] ? '' : ']]></search>
+			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)]]></search>
 		<add><![CDATA[,
 			COUNT(DISTINCT msgs.id_member) AS num_posters
 		FROM {db_prefix}topics AS t
 			INNER JOIN {db_prefix}messages AS msgs ON (msgs.id_topic = t.id_topic' . (isset($_GET['member']) ? ' AND msgs.id_member = {int:filter_by}' : '') . ')
-			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)' . ($user_info['is_guest'] ? '' : ']]></add>
+			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)]]></add>
 	</operation>
 	<operation>	<!-- line 190 -->
-		<search position="before"><![CDATA[WHERE t.id_topic = {int:current_topic}
-		LIMIT 1',
-		array(]]></search>
+		<search position="before"><![CDATA[$topic_parameters = array(]]></search>
 		<add><![CDATA[
-			'filter_by' => (int) (!empty($_GET['member']) ? $_GET['member'] : 0),]]></add>
+		'filter_by' => (int) (!empty($_GET['member']) ? $_GET['member'] : 0),]]></add>
 	</operation>
 	<operation>	<!-- line 457 -->
 		<search position="before"><![CDATA[$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%1$d']]></search>
@@ -54,16 +52,23 @@
 </file>
 <file name="$themedir/Display.template.php">
 	<operation>
-		<search position="after"><![CDATA[// Don't show the profile button if you're not allowed to view the profile.]]></search>
-		<add><![CDATA[// Allow user to show this member's replies to this topic:
-				if ($context['can_filter_by'])
-				{
-					$filter = isset($_GET['member']) ? $txt['show_all_replies'] : sprintf($txt['show_member_replies'], $message['member']['name']);
-					echo '
-										<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], (!isset($_GET['member']) ? ';member=' . $message['member']['id'] : ''), '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . (isset($_GET['member']) ? '/unfilter.png' : '/filter.png') . '" alt="' . $filter . '" title="' . $filter . '" />' : $filter), '</a></li>';
-				}
+		<search position="after"><![CDATA[				echo '
+									</ol>
+								</li>';
+		}
 
-				]]></add>
+		// Any custom fields for standard placement?]]></search>
+		<add><![CDATA[
+
+			// Allow user to show this member's replies to this topic:
+			if ($context['can_filter_by'])
+			{
+				$filter = isset($_GET['member']) ? $txt['show_all_replies'] : sprintf($txt['show_member_replies'], $message['member']['name']);
+				echo '
+									<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], (!isset($_GET['member']) ? ';member=' . $message['member']['id'] : ''), '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . (isset($_GET['member']) ? '/unfilter.png' : '/filter.png') . '" alt="' . $filter . '" title="' . $filter . '" />' : $filter), '</a></li>';
+			}
+
+]]></add>
 	</operation>
 </file>
 </modification>

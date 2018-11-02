@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]FILTER MESSAGES BY POSTER v1.0.5[/b][/size][/color]
+[center][color=red][size=16pt][b]FILTER MESSAGES BY POSTER v1.1[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4174]Link to Mod[/url]
 [/center]
 [hr]
@@ -11,7 +11,7 @@ This mod allows the user to restrict the displaying of messages by any poster by
 There are no admin settings.  To disable it, you must remove this mod.
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
-This mod was tested on SMF 2.0.15, but should work on SMF 2.0 and up.  SMF 1.x is not and will not be supported.
+This mod was tested on SMF 2.0.15 and SMF 2.1 Beta 3, but should work on SMF 2.0 and up.  SMF 2.1 Beta 1, SMF 2.1 Beta 2, and SMF 1.x is not and will not be supported.
 
 [color=blue][b][size=12pt][u]Related Discussion[/u][/size][/b][/color]
 o [url=https://www.simplemachines.org/community/index.php?topic=559341.0]Toggle replies to show OP replies only[/url]

@@ -5,18 +5,36 @@
 	<id>Dougiefresh:Show_Only_OP_Replies</id>
 	<name>Filter Messages by Poster</name>
 	<type>modification</type>
-	<version>1.0.5</version>
+	<version>1.1</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
 		<modification>install_20x.xml</modification>
 		<modification>language_english.xml</modification>
+		<modification>language_spanish_latin.xml</modification>
 		<require-file name="filter.png" destination="$imagesdir" />
 		<require-file name="unfilter.png" destination="$imagesdir" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
 		<modification reverse="true">install_20x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>
+		<modification reverse="true">language_spanish_latin.xml</modification>
+		<remove-file name="$imagesdir/filter.png" />
+		<remove-file name="$imagesdir/unfilter.png" />
+	</uninstall>
+
+	<install for="2.1 Beta 3">
+		<readme parsebbc="true">readme.txt</readme>
+		<modification>install_21x.xml</modification>
+		<modification>language_english.xml</modification>
+		<modification>language_spanish_latin.xml</modification>
+		<require-file name="filter.png" destination="$imagesdir" />
+		<require-file name="unfilter.png" destination="$imagesdir" />
+	</install>
+	<uninstall for="2.1 Beta 3">
+		<modification reverse="true">install_21x.xml</modification>
+		<modification reverse="true">language_english.xml</modification>
+		<modification reverse="true">language_spanish_latin.xml</modification>
 		<remove-file name="$imagesdir/filter.png" />
 		<remove-file name="$imagesdir/unfilter.png" />
 	</uninstall>
