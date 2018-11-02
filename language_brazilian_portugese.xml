@@ -3,24 +3,24 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:Show_Only_OP_Replies</id>
 <name>Show Only OP Replies</name>
-<version>1.3</version>
+<version>1.2</version>
 
-<file name="$languagedir/index.spanish_latin.php" error="skip">
+<file name="$languagedir/index.portuguese_brazilian.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['show_all_replies'] = 'Mostrar todas las respuestas';
-$txt['show_member_replies'] = 'Mostrar solo respuestas por %s';
+$txt['show_all_replies'] = 'Mostrar todas as respostas';
+$txt['show_member_replies'] = 'Mostrar somente respostas por %s';
 ]]></add>
 	</operation>
 </file>
 
-<file name="$languagedir/index.spanish_latin-utf8.php" error="skip">
+<file name="$languagedir/index.portuguese_brazilian-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['show_all_replies'] = 'Mostrar todas las respuestas';
-$txt['show_member_replies'] = 'Mostrar solo respuestas por %s';
+$txt['show_all_replies'] = 'Mostrar todas as respostas';
+$txt['show_member_replies'] = 'Mostrar somente respostas por %s';
 ]]></add>
 	</operation>
 </file>
