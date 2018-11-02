@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:Show_Only_OP_Replies</id>
 <name>Filter Messages by Poster</name>
-<version>1.0.4</version>
+<version>1.0.5</version>
 
 <file name="$sourcedir/Display.php">
 	<!-- Display function -->
@@ -60,7 +60,7 @@
 				{
 					$filter = isset($_GET['member']) ? $txt['show_all_replies'] : sprintf($txt['show_member_replies'], $message['member']['name']);
 					echo '
-										<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], ';member=', $message['member']['id'], '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . (isset($_GET['member']) ? '/unfilter.png' : '/filter.png') . '" alt="' . $filter . '" title="' . $filter . '" />' : $filter), '</a></li>';
+										<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], (!isset($_GET['member']) ? ';member=' . $message['member']['id'] : ''), '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . (isset($_GET['member']) ? '/unfilter.png' : '/filter.png') . '" alt="' . $filter . '" title="' . $filter . '" />' : $filter), '</a></li>';
 				}
 
 				]]></add>

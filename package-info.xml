@@ -5,7 +5,7 @@
 	<id>Dougiefresh:Show_Only_OP_Replies</id>
 	<name>Filter Messages by Poster</name>
 	<type>modification</type>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
