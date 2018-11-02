@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Dougiefresh:Show_Only_OP_Replies</id>
+<name>Show Only OP Replies</name>
+<version>1.0</version>
+
+<file name="$languagedir/index.english.php">
+	<operation>
+		<search position="end" />
+		<add><![CDATA[
+$txt['show_op_replies'] = 'Show OP replies';
+$txt['show_all_replies'] = 'Show all replies';
+]]></add>
+	</operation>
+</file>
+</modification>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Dougiefresh:Show_Only_OP_Replies</id>
+<name>Show Only OP Replies</name>
+<version>1.0</version>
+
+<file name="$sourcedir/Display.php">
+	<!-- Display function -->
+	<operation>	<!-- line 457 -->
+		<search position="before"><![CDATA[$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%1$d']]></search>
+		<add><![CDATA[ . (isset($_GET['ShowOP']) ? ';ShowOP' : '')]]></add>
+	</operation>
+	<operation>	<!-- line 801 -->
+		<search position="before"><![CDATA[WHERE id_topic = {int:current_topic}' . ]]></search>
+		<add><![CDATA[(isset($_GET['ShowOP']) ? '
+			AND id_member = {int:id_member_of_op}' : '') . ]]></add>
+	</operation>
+	<operation>	<!-- line 805 -->
+		<search position="before"><![CDATA[LIMIT ' . $start . ', ' . $limit),
+		array(]]></search>
+		<add><![CDATA[
+			'id_member_of_op' => $topicinfo['id_member_started'],]]></add>
+	</operation>
+	<operation>	<!-- line 1076 -->
+		<search position="after"><![CDATA[// Wireless shows a "more" if you can do anything special.]]></search>
+		<add><![CDATA[// Can we allow the user to toggle only OP replies?
+	$context['can_op_restrict'] = isset($_GET['ShowOP']) || count($posters) > 1;
+	$context['op_restrict_start'] = 'msg' . min($messages);
+
+	]]></add>
+	</operation>
+	
+	<!-- "Normal button" hook function -->
+	<operation>
+		<search position="end" />
+		<add><![CDATA[
+function SOOR_Display_Button(&$normal_buttons)
+{
+	global $context, $scripturl, $topic;
+
+	// Can we allow the user to toggle only OP replies?
+	foreach ($normal_buttons as $id => $button)
+		$normal_buttons[$id]['url'] .= isset($_GET['ShowOP']) ? ';ShowOP' : '';
+	if (!empty($context['can_op_restrict']))
+		$normal_buttons['op_restriction'] = array('text' => isset($_GET['ShowOP']) ? 'show_all_replies' : 'show_op_replies', 'lang' => true, 'custom' => 'rel="new_win nofollow"', 'url' => $scripturl . '?topic=' . $context['current_topic'] . '.' . $context['op_restrict_start'] . (isset($_GET['ShowOP']) ? '' : ';ShowOP'));
+}
+]]></add>
+	</operation>
+</file>
+</modification>
