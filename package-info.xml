@@ -3,9 +3,9 @@
 
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Dougiefresh:Show_Only_OP_Replies</id>
-	<name>Show Only OP Replies</name>
+	<name>Filter Messages by Poster</name>
 	<type>modification</type>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>

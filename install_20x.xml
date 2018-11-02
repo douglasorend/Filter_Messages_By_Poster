@@ -3,17 +3,31 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:Show_Only_OP_Replies</id>
 <name>Show Only OP Replies</name>
-<version>1.0</version>
+<version>1.0.2</version>
 
 <file name="$sourcedir/Display.php">
 	<!-- Display function -->
+	<operation>	<!-- line 182 -->
+		<search position="replace"><![CDATA[t.num_replies, ]]></search>
+		<add><![CDATA[' . (isset($_GET['member']) ? 'COUNT(msgs.id_msg) AS ' : 't.') . 'num_replies, ]]></add>
+	</operation>
+	<operation>	<!-- line 186 -->
+		<search position="replace"><![CDATA[
+		FROM {db_prefix}topics AS t
+			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)' . ($user_info['is_guest'] ? '' : ']]></search>
+		<add><![CDATA[,
+			COUNT(DISTINCT msgs.id_member) AS num_posters
+		FROM {db_prefix}topics AS t
+			INNER JOIN {db_prefix}messages AS msgs ON (msg.id_topic = t.id_topic' . (isset($_GET['member']) ? ' AND msg.id_member = {int:filter_by}' : '') . ')
+			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)' . ($user_info['is_guest'] ? '' : ']]></add>
+	</operation>
 	<operation>	<!-- line 457 -->
 		<search position="before"><![CDATA[$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%1$d']]></search>
-		<add><![CDATA[ . (isset($_GET['ShowOP']) ? ';ShowOP' : '')]]></add>
+		<add><![CDATA[ . (isset($_GET['member']) ? ';member=' . $_GET['member'] : '')]]></add>
 	</operation>
 	<operation>	<!-- line 801 -->
 		<search position="before"><![CDATA[WHERE id_topic = {int:current_topic}' . ]]></search>
-		<add><![CDATA[(isset($_GET['ShowOP']) || !empty($_GET['member']) ? '
+		<add><![CDATA[(!empty($_GET['member']) ? '
 			AND id_member = {int:id_filter}' : '') . ]]></add>
 	</operation>
 	<operation>	<!-- line 805 -->
@@ -25,7 +39,7 @@
 	<operation>	<!-- line 1076 -->
 		<search position="after"><![CDATA[// Wireless shows a "more" if you can do anything special.]]></search>
 		<add><![CDATA[// Can we allow the user to toggle only OP replies?
-	$context['can_filter_by'] = isset($_GET['ShowOP']) || !empty($_GET['member']) || count($posters) > 1;
+	$context['can_filter_by'] = !empty($_GET['member']) || $topicinfo['num_posters'] > 1;
 	$context['op_filter_start'] = 'msg' . min($messages);
 	$context['op_filter_topic'] = $topic;
 
@@ -38,13 +52,13 @@
 		<add><![CDATA[
 function SOOR_Display_Button(&$normal_buttons)
 {
-	global $context, $scripturl, $topic;
+	global $context, $scripturl, $topicinfo;
 
 	// Can we allow the user to toggle only OP replies?
 	foreach ($normal_buttons as $id => $button)
-		$normal_buttons[$id]['url'] .= (isset($_GET['ShowOP']) ? ';ShowOP' : '') . (isset($GET['member']) ? ';member=' . $_GET['member'] : '');
+		$normal_buttons[$id]['url'] .= (isset($GET['member']) ? ';member=' . $_GET['member'] : '');
 	if (!empty($context['can_filter_by']))
-		$normal_buttons['op_restriction'] = array('text' => isset($_GET['ShowOP']) || isset($_GET['member']) ? 'show_all_replies' : 'show_op_replies', 'lang' => true, 'custom' => 'rel="new_win nofollow"', 'url' => $scripturl . '?topic=' . $context['current_topic'] . '.' . $context['op_filter_start'] . (isset($_GET['ShowOP']) || isset($GET['member']) ? '' : ';ShowOP'));
+		$normal_buttons['op_restriction'] = array('text' => isset($_GET['member']) ? 'show_all_replies' : 'show_op_replies', 'lang' => true, 'custom' => 'rel="new_win nofollow"', 'url' => $scripturl . '?topic=' . $context['current_topic'] . '.' . $context['op_filter_start'] . (isset($_GET['member']) ? '' : ';member=' . $topicinfo['id_member_started']));
 }
 ]]></add>
 	</operation>
@@ -53,7 +67,7 @@ function SOOR_Display_Button(&$normal_buttons)
 	<operation>
 		<search position="after"><![CDATA[// Don't show the profile button if you're not allowed to view the profile.]]></search>
 		<add><![CDATA[// Allow user to show this member's replies to this topic:
-				if ($context['can_filter_by'] && empty($_GET['member']) && empty($_GET['ShowOP']))
+				if ($context['can_filter_by'])
 					echo '
 										<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], ';member=', $message['member']['id'], '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/filter.png" alt="' . $txt['email'] . '" title="' . sprintf($txt['show_member_replies'], $message['member']['name']) . '" />' : sprintf($txt['show_member_replies'], $message['member']['name'])), '</a></li>';
 

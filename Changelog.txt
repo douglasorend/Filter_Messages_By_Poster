@@ -1,3 +1,8 @@
+v1.0.2 - March 16th, 2018
+o Removed [b]ShowOP[/b] URL tag in favor of [b]member[/b] URL tag.
+o Fixed page count when [b]member[/b] tag is used.
+o Fixed issue where "Show OP replies" was improperly unavailable.
+
 v1.0.1 - March 15th, 2018
 o Added icon in poster area in order to allow filtering messages by poster.
 
