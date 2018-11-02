@@ -1,17 +1,20 @@
 [hr]
-[center][color=red][size=16pt][b]FILTER MESSAGES BY POSTER v1.0.3[/b][/size][/color]
+[center][color=red][size=16pt][b]FILTER MESSAGES BY POSTER v1.0.4[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4174]Link to Mod[/url]
 [/center]
 [hr]
 
 [color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
-This mod allows the user to restrict the displaying of messages to only those from the original poster (OP) using the button at the top of the screen, [b]OR[/b] you can filter the messages by any poster by using the filter icon in the poster area in the messages display.
+This mod allows the user to restrict the displaying of messages by any poster by using the filter icon in the poster area in the messages display.  The filtering can be stopped using the unfilter icon in the poster area in the messages display (or using the back button, naturally).
 
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
 There are no admin settings.  To disable it, you must remove this mod.
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
 This mod was tested on SMF 2.0.15, but should work on SMF 2.0 and up.  SMF 1.x is not and will not be supported.
+
+[color=blue][b][size=12pt][u]Related Discussion[/u][/size][/b][/color]
+o [url=https://www.simplemachines.org/community/index.php?topic=559341.0]Toggle replies to show OP replies only[/url]
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
 The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=1637.msg2382#msg2382]XPtsp.com[/url].
