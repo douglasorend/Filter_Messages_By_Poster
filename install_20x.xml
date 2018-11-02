@@ -2,8 +2,8 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:Show_Only_OP_Replies</id>
-<name>Show Only OP Replies</name>
-<version>1.0.2</version>
+<name>Filter Messages by Poster</name>
+<version>1.0.3</version>
 
 <file name="$sourcedir/Display.php">
 	<!-- Display function -->
@@ -18,8 +18,15 @@
 		<add><![CDATA[,
 			COUNT(DISTINCT msgs.id_member) AS num_posters
 		FROM {db_prefix}topics AS t
-			INNER JOIN {db_prefix}messages AS msgs ON (msg.id_topic = t.id_topic' . (isset($_GET['member']) ? ' AND msg.id_member = {int:filter_by}' : '') . ')
+			INNER JOIN {db_prefix}messages AS msgs ON (msgs.id_topic = t.id_topic' . (isset($_GET['member']) ? ' AND msgs.id_member = {int:filter_by}' : '') . ')
 			INNER JOIN {db_prefix}messages AS ms ON (ms.id_msg = t.id_first_msg)' . ($user_info['is_guest'] ? '' : ']]></add>
+	</operation>
+	<operation>	<!-- line 190 -->
+		<search position="before"><![CDATA[WHERE t.id_topic = {int:current_topic}
+		LIMIT 1',
+		array(]]></search>
+		<add><![CDATA[
+			'filter_by' => (int) (!empty($_GET['member']) ? $_GET['member'] : 0),]]></add>
 	</operation>
 	<operation>	<!-- line 457 -->
 		<search position="before"><![CDATA[$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%1$d']]></search>

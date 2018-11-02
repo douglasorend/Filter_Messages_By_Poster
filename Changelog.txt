@@ -1,3 +1,7 @@
+v1.0.3 - March 17th, 2018
+o Fixed missing database value [b]filter_by[/b].
+o Fixed unknown column in database query.
+
 v1.0.2 - March 16th, 2018
 o Removed [b]ShowOP[/b] URL tag in favor of [b]member[/b] URL tag.
 o Fixed page count when [b]member[/b] tag is used.
