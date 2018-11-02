@@ -1,26 +1,30 @@
-[hr]
-[center][color=red][size=16pt][b]FILTER MESSAGES BY POSTER v1.2[/b][/size][/color]
-[url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4174]Link to Mod[/url]
-[/center]
-[hr]
+-------
 
-[color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
+# FILTER MESSAGES BY POSTER v1.2
+
+[**By Dougiefresh**](http://www.simplemachines.org/community/index.php?action=profile;u=253913) -> [Link to Mod](http://custom.simplemachines.org/mods/index.php?mod=4174)
+
+--------
+
+## Introduction
 This mod allows the user to restrict the displaying of messages by any poster by using the filter icon in the poster area in the messages display.  The filtering can be stopped using the unfilter icon in the poster area in the messages display (or using the back button, naturally).
 
-[color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
+## Admin Settings
 There are no admin settings.  To disable it, you must remove this mod.
 
-[color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
+## Compatibility Notes
 This mod was tested on SMF 2.0.15 and SMF 2.1 Beta 3, but should work on SMF 2.0 and up.  SMF 2.1 Beta 1, SMF 2.1 Beta 2, and SMF 1.x is not and will not be supported.
 
-[color=blue][b][size=12pt][u]Related Discussion[/u][/size][/b][/color]
-o [url=https://www.simplemachines.org/community/index.php?topic=559341.0]Toggle replies to show OP replies only[/url]
+## Related Discussion
 
-[color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
-The changelog can be viewed at [url=http://www.xptsp.com/board/free-modifications/filter-messages-by-poster/?tab=1]XPtsp.com[/url].
+- [Toggle replies to show OP replies only](https://www.simplemachines.org/community/index.php?topic=559341.0)
 
-[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+## Changelog
+The changelog can be viewed at [XPtsp.com](http://www.xptsp.com/board/free-modifications/filter-messages-by-poster/?tab=1).
+
+## License
 Copyright (c) 2018, Douglas Orend
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

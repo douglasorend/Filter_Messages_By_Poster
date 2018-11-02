@@ -5,13 +5,14 @@
 	<id>Dougiefresh:Show_Only_OP_Replies</id>
 	<name>Filter Messages by Poster</name>
 	<type>modification</type>
-	<version>1.1</version>
+	<version>1.2</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
 		<modification>install_20x.xml</modification>
 		<modification>language_english.xml</modification>
 		<modification>language_spanish_latin.xml</modification>
+		<modification>language_russian.xml</modification>
 		<require-file name="filter.png" destination="$imagesdir" />
 		<require-file name="unfilter.png" destination="$imagesdir" />
 	</install>
@@ -19,6 +20,7 @@
 		<modification reverse="true">install_20x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>
 		<modification reverse="true">language_spanish_latin.xml</modification>
+		<modification reverse="true">language_russian.xml</modification>
 		<remove-file name="$imagesdir/filter.png" />
 		<remove-file name="$imagesdir/unfilter.png" />
 	</uninstall>
@@ -28,6 +30,7 @@
 		<modification>install_21x.xml</modification>
 		<modification>language_english.xml</modification>
 		<modification>language_spanish_latin.xml</modification>
+		<modification>language_russian.xml</modification>
 		<require-file name="filter.png" destination="$imagesdir" />
 		<require-file name="unfilter.png" destination="$imagesdir" />
 	</install>
@@ -35,6 +38,7 @@
 		<modification reverse="true">install_21x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>
 		<modification reverse="true">language_spanish_latin.xml</modification>
+		<modification reverse="true">language_russian.xml</modification>
 		<remove-file name="$imagesdir/filter.png" />
 		<remove-file name="$imagesdir/unfilter.png" />
 	</uninstall>

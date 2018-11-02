@@ -3,14 +3,14 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:Show_Only_OP_Replies</id>
 <name>Show Only OP Replies</name>
-<version>1.2</version>
+<version>1.1</version>
 
-<file name="$languagedir/index.english.php">
+<file name="$languagedir/index.russian-utf8.php">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['show_all_replies'] = 'Show all replies';
-$txt['show_member_replies'] = 'Show only replies by %s';
+$txt['show_all_replies'] = 'Все сообщения темы';
+$txt['show_member_replies'] = 'Сообщения от %s';
 ]]></add>
 	</operation>
 </file>
