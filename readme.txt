@@ -1,11 +1,11 @@
 [hr]
-[center][color=red][size=16pt][b]SHOW ONLY OP REPLIES v1.0[/b][/size][/color]
+[center][color=red][size=16pt][b]SHOW ONLY OP REPLIES v1.0.1[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4174]Link to Mod[/url]
 [/center]
 [hr]
 
 [color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
-This mod allows the user to restrict the displaying of messages to only those from the original poster (OP).
+This mod allows the user to restrict the displaying of messages to only those from the original poster (OP) using the button at the top of the screen, [b]OR[/b] you can filter the messages by any poster by using the filter icon in the poster area in the messages display.
 
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
 There are no admin settings.  To disable it, you must remove this mod.

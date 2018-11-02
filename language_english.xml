@@ -11,6 +11,7 @@
 		<add><![CDATA[
 $txt['show_op_replies'] = 'Show OP replies';
 $txt['show_all_replies'] = 'Show all replies';
+$txt['show_member_replies'] = 'Show only replies by %s';
 ]]></add>
 	</operation>
 </file>

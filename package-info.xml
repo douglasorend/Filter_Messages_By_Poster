@@ -5,17 +5,19 @@
 	<id>Dougiefresh:Show_Only_OP_Replies</id>
 	<name>Show Only OP Replies</name>
 	<type>modification</type>
-	<version>1.0</version>
+	<version>1.0.1</version>
 
-	<install for="2.0 - 2.0.99, 2.1 Beta 3">
+	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
 		<modification>install_20x.xml</modification>
 		<modification>language_english.xml</modification>
+		<require-file name="filter.png" destination="$imagesdir" />
 	</install>
-	<uninstall for="2.0 - 2.0.99, 2.1 Beta 3">
+	<uninstall for="2.0 - 2.0.99">
 		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_20x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>
+		<remove-file name="$imagesdir/filter.png" />
 	</uninstall>
 </package-info>

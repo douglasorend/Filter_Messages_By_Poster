@@ -13,20 +13,21 @@
 	</operation>
 	<operation>	<!-- line 801 -->
 		<search position="before"><![CDATA[WHERE id_topic = {int:current_topic}' . ]]></search>
-		<add><![CDATA[(isset($_GET['ShowOP']) ? '
-			AND id_member = {int:id_member_of_op}' : '') . ]]></add>
+		<add><![CDATA[(isset($_GET['ShowOP']) || !empty($_GET['member']) ? '
+			AND id_member = {int:id_filter}' : '') . ]]></add>
 	</operation>
 	<operation>	<!-- line 805 -->
 		<search position="before"><![CDATA[LIMIT ' . $start . ', ' . $limit),
 		array(]]></search>
 		<add><![CDATA[
-			'id_member_of_op' => $topicinfo['id_member_started'],]]></add>
+			'id_filter' => (int) (!empty($_GET['member']) ? $_GET['member'] : $topicinfo['id_member_started']),]]></add>
 	</operation>
 	<operation>	<!-- line 1076 -->
 		<search position="after"><![CDATA[// Wireless shows a "more" if you can do anything special.]]></search>
 		<add><![CDATA[// Can we allow the user to toggle only OP replies?
-	$context['can_op_restrict'] = isset($_GET['ShowOP']) || count($posters) > 1;
-	$context['op_restrict_start'] = 'msg' . min($messages);
+	$context['can_filter_by'] = isset($_GET['ShowOP']) || !empty($_GET['member']) || count($posters) > 1;
+	$context['op_filter_start'] = 'msg' . min($messages);
+	$context['op_filter_topic'] = $topic;
 
 	]]></add>
 	</operation>
@@ -41,11 +42,22 @@ function SOOR_Display_Button(&$normal_buttons)
 
 	// Can we allow the user to toggle only OP replies?
 	foreach ($normal_buttons as $id => $button)
-		$normal_buttons[$id]['url'] .= isset($_GET['ShowOP']) ? ';ShowOP' : '';
-	if (!empty($context['can_op_restrict']))
-		$normal_buttons['op_restriction'] = array('text' => isset($_GET['ShowOP']) ? 'show_all_replies' : 'show_op_replies', 'lang' => true, 'custom' => 'rel="new_win nofollow"', 'url' => $scripturl . '?topic=' . $context['current_topic'] . '.' . $context['op_restrict_start'] . (isset($_GET['ShowOP']) ? '' : ';ShowOP'));
+		$normal_buttons[$id]['url'] .= (isset($_GET['ShowOP']) ? ';ShowOP' : '') . (isset($GET['member']) ? ';member=' . $_GET['member'] : '');
+	if (!empty($context['can_filter_by']))
+		$normal_buttons['op_restriction'] = array('text' => isset($_GET['ShowOP']) || isset($_GET['member']) ? 'show_all_replies' : 'show_op_replies', 'lang' => true, 'custom' => 'rel="new_win nofollow"', 'url' => $scripturl . '?topic=' . $context['current_topic'] . '.' . $context['op_filter_start'] . (isset($_GET['ShowOP']) || isset($GET['member']) ? '' : ';ShowOP'));
 }
 ]]></add>
+	</operation>
+</file>
+<file name="$themedir/Display.template.php">
+	<operation>
+		<search position="after"><![CDATA[// Don't show the profile button if you're not allowed to view the profile.]]></search>
+		<add><![CDATA[// Allow user to show this member's replies to this topic:
+				if ($context['can_filter_by'] && empty($_GET['member']) && empty($_GET['ShowOP']))
+					echo '
+										<li><a href="', $scripturl, '?topic=', $context['op_filter_topic'], '.msg', $message['id'], ';member=', $message['member']['id'], '#msg', $message['id'], '" rel="nofollow">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/filter.png" alt="' . $txt['email'] . '" title="' . sprintf($txt['show_member_replies'], $message['member']['name']) . '" />' : sprintf($txt['show_member_replies'], $message['member']['name'])), '</a></li>';
+
+				]]></add>
 	</operation>
 </file>
 </modification>
